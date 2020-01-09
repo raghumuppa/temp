@@ -6,4 +6,12 @@ services:
     ports:
       - 9000:80
     volumes:
-      - $PWD/conf.d:/etc/nginx/conf.d
+      - ./conf.d:/etc/nginx/conf.d
+      - ./app:/app
+    links:
+      - php
+  
+  php:
+    image: 'php:7-fpm'
+    volumes:
+      - ./app:/app
