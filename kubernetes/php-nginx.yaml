@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-nginx-demo
+  labels:
+    app: php
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      volumes:
+        - name: shared-files
+          emptyDir: {}
+        - name: nginxconf
+          configMap:
+            name: nginx-config
+      containers:
+        - image: rade9094/myphp
+          imagePullPolicy: IfNotPresent
+          name: php
+          volumeMounts:
+            - name: shared-files
+              mountPath: /var/www/html
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "cp -r /app/. /var/www/html"]
+        - image: nginx
+          imagePullPolicy: Always
+          name: nginx
+          volumeMounts:
+            - name: shared-files
+              mountPath: /var/www/html
+            - mountPath: /etc/nginx/conf.d
+              name: nginxconf
