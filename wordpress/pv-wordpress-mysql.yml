@@ -12,7 +12,7 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     # For demo purpose not recommended for production env
     path: "/mnt/data/html"
@@ -28,9 +28,9 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 1Gi
+    storage: 2Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     # For demo purpose not recommended for production env
     path: "/mnt/data/mysql"
