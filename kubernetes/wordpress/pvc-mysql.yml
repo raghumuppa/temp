@@ -5,6 +5,7 @@ metadata:
   labels:
     app: wordpress
 spec:
+  storageClassName: my-local-storage 
   accessModes:
     - ReadWriteOnce
   resources:

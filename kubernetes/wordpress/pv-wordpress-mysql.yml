@@ -1,5 +1,3 @@
-# Create PersistentVolume ofor mysql and wordpress
-# change the ip of NFS server
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -8,13 +6,13 @@ metadata:
     app: wordpress
     tier: frontend
 spec:
-  storageClassName: manual
+  storageClassName: my-local-storage
   capacity:
     storage: 1Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    # For demo purpose not recommended for production env
     path: "/mnt/data/html"
 
 ---
@@ -26,11 +24,11 @@ metadata:
     app: wordpress
     tier: mysql
 spec:
-  storageClassName: manual
+  storageClassName: my-local-storage
   capacity:
     storage: 2Gi
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    # For demo purpose not recommended for production env
     path: "/mnt/data/mysql"
