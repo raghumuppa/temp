@@ -4,7 +4,11 @@ metadata:
   name: ingress-resource
 spec:
   rules:
+<<<<<<< HEAD
   - host: testbp.polyetchnic.local
+=======
+  - host: ec2-3-92-207-163.compute-1.amazonaws.com
+>>>>>>> 2e54b350b209d8fc923da96bcf4ba25aef77e415
     http:
       paths:
       - backend:

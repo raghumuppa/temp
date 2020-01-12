@@ -33,13 +33,18 @@ spec:
               exec:
                 command: ["/bin/sh", "-c", "cp -r /app/. /var/www/html"]
         - image: nginx
+<<<<<<< HEAD
           imagePullPolicy: IfNotPresent
+=======
+          imagePullPolicy: Always
+>>>>>>> 2e54b350b209d8fc923da96bcf4ba25aef77e415
           name: nginx
           volumeMounts:
             - name: shared-files
               mountPath: /var/www/html
             - mountPath: /etc/nginx/conf.d
               name: nginxconf
+<<<<<<< HEAD
           livenessProbe:
             httpGet:
               path: /index.php 
@@ -49,3 +54,5 @@ spec:
                   value: Awesome
             initialDelaySeconds: 5
             periodSeconds: 5
+=======
+>>>>>>> 2e54b350b209d8fc923da96bcf4ba25aef77e415
