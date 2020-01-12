@@ -1,0 +1,7 @@
+--------------------------------
+for creating the encrypted password
+echo -n ''password' | base64
+----------------------------
+for creating the secret resource
+kubectl create -f secret.yaml
+----------------------------
