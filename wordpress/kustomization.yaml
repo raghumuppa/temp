@@ -1,0 +1,5 @@
+resources:
+- pvc-mysql.yml
+- pvc-wordpress.yml
+- mysql-deploy.yaml
+- wordpress-deploy.yml

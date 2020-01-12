@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-resource
+spec:
+  rules:
+  - host: testbp.polyetchnic.local
+    http:
+      paths:
+      - backend:
+          serviceName: wordpress 
+          servicePort: 80
